@@ -4,6 +4,9 @@
 
 package frc.robot;
 
+import frc.robot.subsystems.swervedrive.MyVision;
+
+
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
@@ -140,6 +143,7 @@ public class Robot extends TimedRobot
   @Override
   public void teleopPeriodic()
   {
+    MyVision.ParseRawResults();
   }
 
   @Override
