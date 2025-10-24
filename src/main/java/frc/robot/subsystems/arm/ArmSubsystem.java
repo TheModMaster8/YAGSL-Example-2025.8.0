@@ -1,5 +1,4 @@
 package frc.robot.subsystems.arm;
-
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.SparkBase.PersistMode;
@@ -10,6 +9,8 @@ import com.revrobotics.AbsoluteEncoder;
 import com.revrobotics.spark.SparkClosedLoopController;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class ArmSubsystem extends SubsystemBase 
 {
@@ -40,14 +41,14 @@ public class ArmSubsystem extends SubsystemBase
         masterConfig.absoluteEncoder
             .positionConversionFactor(1.0)  // 1 rotation = 1.0 (adjust as needed)
             .velocityConversionFactor(1.0)  // Adjust as needed for your units
-            .inverted(false)              // Set true if encoder reads backwards
-            .zeroOffset(0.0);               // Set offset if you want a specific zero position
+            .inverted(true)              // Set true if encoder reads backwards
+            .zeroOffset(0.0); //782);               // Set offset if you want a specific zero position
 
         // Configure master motor with closed-loop control
         masterConfig
             .inverted(false)
             .idleMode(SparkMaxConfig.IdleMode.kBrake)
-            .smartCurrentLimit(5)  // Set current limit to 40A, setting to 5 for testing
+            .smartCurrentLimit(30)  // Set current limit to 40A, setting to 5 for testing
             .closedLoop
                 .feedbackSensor(FeedbackSensor.kAbsoluteEncoder)
                 .pid(kP, kI, kD)
@@ -57,9 +58,9 @@ public class ArmSubsystem extends SubsystemBase
         // Configure slave motor to follow master
         slaveConfig
             .follow(m_masterMotor)
-            .inverted(true)  // Set to true if slave should spin opposite direction
+            .inverted(false)  // Set to true if slave should spin opposite direction
             .idleMode(SparkMaxConfig.IdleMode.kBrake)
-            .smartCurrentLimit(5);     // Set current limit to 40A, setting to 5 for testing
+            .smartCurrentLimit(30);     // Set current limit to 40A, setting to 5 for testing
 
         // Apply configurations
         m_masterMotor.configure(masterConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
@@ -109,19 +110,31 @@ public class ArmSubsystem extends SubsystemBase
 
     public void setAngle(double desiredAngle)
     {
+        
         desiredAngle = Math.max(Math.min(0.789, desiredAngle), 0.50);
+        System.out.println("-----------------------------setAngle: " + desiredAngle);
         m_pidController.setReference(desiredAngle, SparkMax.ControlType.kPosition);
         this.desiredAngle = desiredAngle;
     }
 
     public void drive(double notdrive) 
     {
+      System.out.println("-----------------------------drive: " + notdrive);
+      System.out.println("-----------------------------driveTo: " + (m_encoder.getPosition() + notdrive * 0.05));
       setAngle(m_encoder.getPosition() + notdrive * 0.05);
+      System.out.println("-----------------------------master amp: " +  m_masterMotor.getOutputCurrent());
     }
 
 
     @Override
-    public void periodic() {
-        // Add telemetry or other periodic updates here
+    public void periodic()
+    {
+        
+        // Make Sensor readings available on Shuffleboard
+        SmartDashboard.putNumber("Arm ABS Encoder Value", m_encoder.getPosition());
+        SmartDashboard.putNumber("Master Motor Amperage", m_masterMotor.getOutputCurrent());
+        SmartDashboard.putNumber("Slave Motor Amperage", m_slaveMotor.getOutputCurrent());
+        SmartDashboard.putNumber("Master Motor Bus Voltage", m_masterMotor.getBusVoltage());
+        SmartDashboard.putNumber("Slave Motor Bus Voltage", m_slaveMotor.getBusVoltage());
     }
 }
