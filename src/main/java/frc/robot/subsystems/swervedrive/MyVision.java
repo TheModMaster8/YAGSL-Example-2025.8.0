@@ -70,3 +70,86 @@ public class MyVision
         }
     }
 }
+/** 
+public class LimeLightVision
+{
+    SwerveSubsystem swerveSubsystem;
+    public static double rotationWhileLost = 0;
+    public static double rotationAtLoss = 0;
+    public static int targetID = -1; // ID of the target currently being tracked. -1 means no target.
+
+
+
+    //get all targets in sight
+
+    //determine which target is best either by closest or manual selection
+
+    //get the offset from the target
+
+    //determine the rotation and translation needed to reach the target
+
+    //activate the commmand to seek target.
+
+    //remember the last known target and continue to track it if it goes out of sight, ie if rotated too much left, start new recording of the rotational value since lost sight of target (lost sight > set r=0, > rot more > r= 50 CW )
+
+    //if target is lost, rotate back to last known position and search for target again after stick input is no longer held in same direction as first lost sight or if robot is hit and rotated off course.
+
+    //apply course correction over time to reach the target taking into account the user's input
+
+    //stop when close enough to target or some other condition is met, cut off humam input with the exception of an over-ride key that returns control to the human. 
+
+    //after score or task is complete, return to normal operation and end vision.
+
+
+
+
+    public void StoreRotationAtLoss(double currentRotation) // In Degrees NOT radians.
+    {
+        rotationAtLoss = swerveSubsystem.getHeading().getDegrees();
+    }
+
+    public void UpdateRotationWhileLost(double currentRotation) // In Degrees NOT radians.
+    {
+        rotationWhileLost = swerveSubsystem.getHeading().getDegrees();
+    }
+
+    public double CorrectRotation() // In Degrees NOT radians.
+    {
+        return rotationWhileLost - rotationAtLoss;
+    }
+
+    public void StoreCurrentTarget()
+    {
+
+    }
+
+
+
+    public void IsTargetRegained()
+    {
+        if()
+    }
+
+    public void GetTargetData()
+    {
+    // Get raw AprilTag/Fiducial data
+
+        LimelightResults results = LimelightHelpers.getTargetCount("");
+
+    RawFiducial[] fiducials = LimelightHelpers.getRawFiducials("");
+        for (RawFiducial fiducial : fiducials)
+        {
+            int id = fiducial.id;                    // Tag ID
+            double txnc = fiducial.txnc;             // X offset (no crosshair)
+            double tync = fiducial.tync;             // Y offset (no crosshair)
+            double ta = fiducial.ta;                 // Target area
+            double distToCamera = fiducial.distToCamera;  // Distance to camera
+            double distToRobot = fiducial.distToRobot;    // Distance to robot
+            double ambiguity = fiducial.ambiguity;   // Tag pose ambiguity
+        }
+    }
+}
+    
+
+//NetworkTableInstance.getDefault().getTable("limelight").getEntry("<variablename>").getDoubleArray(new double[6]);
+*/
