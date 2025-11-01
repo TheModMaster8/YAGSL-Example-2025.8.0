@@ -7,8 +7,6 @@ import com.revrobotics.spark.SparkBase.ResetMode;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.config.ClosedLoopConfig.FeedbackSensor;
 
-import javax.swing.plaf.metal.MetalTheme;
-
 import com.revrobotics.AbsoluteEncoder;
 import com.revrobotics.spark.SparkClosedLoopController;
 
@@ -31,6 +29,7 @@ public class ArmSubsystem extends SubsystemBase
 
     Double desiredAngle;
     Double mappedTriggerValue;
+    Double armSaftyMargin = 0.8; // Position Value of the through-bore encoder when the arm is just barely fully down.
     //Boolean triggerPressed;
 
     public ArmSubsystem() 
@@ -114,9 +113,9 @@ public class ArmSubsystem extends SubsystemBase
     {
         System.out.println("drive: " + triggerValue);
         
-        if (triggerValue > 0.08) // deadband to prevent jitter when trigger is not being pressed.
+        if (triggerValue > armSaftyMargin) // deadband to prevent jitter when trigger is not being pressed.
         {
-            mappedTriggerValue = MathUtil.interpolate(0.782, 0.540, triggerValue); // Map trigger value to arm's angle range, the inversion is handled in the interpolate function (higher trigger value = lower angle = arm up).
+            mappedTriggerValue = MathUtil.interpolate(0.782, 0.540, triggerValue); // Map trigger value to arm's angle range, the inversion is handled in the interpolate function (higher trigger value = lower sensor angle = arm up).
             m_pidController.setReference(mappedTriggerValue, SparkMax.ControlType.kPosition, ClosedLoopSlot.kSlot0);
             System.out.println("driveTo: " + mappedTriggerValue);
         }
@@ -135,6 +134,25 @@ public class ArmSubsystem extends SubsystemBase
 
         System.out.println("master amp: " +  m_masterMotor.getOutputCurrent());
         System.out.println("slave amp: " +  m_slaveMotor.getOutputCurrent());
+    }
+
+    public void lowerArm()
+    { 
+       m_pidController.setReference(0.782, SparkMax.ControlType.kPosition, ClosedLoopSlot.kSlot0);
+    
+    }
+
+    /**Returns TRUE if the arm is all the way down or FALSE if otherwise. */
+    public boolean isArmDown()
+    {
+        if (m_encoder.getPosition() <= armSaftyMargin)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     @Override

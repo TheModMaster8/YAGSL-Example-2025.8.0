@@ -1,0 +1,69 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.8 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.8">
+  <diagram name="Page-1" id="0rpQPjOwYsWJOKX8VRgC">
+    <mxGraphModel dx="3354" dy="1356" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="eah_Wrp4yX6WBgLpeoJf-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="eah_Wrp4yX6WBgLpeoJf-1" target="eah_Wrp4yX6WBgLpeoJf-8" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="140" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eah_Wrp4yX6WBgLpeoJf-1" value="robot container" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" parent="1" vertex="1">
+          <mxGeometry x="80" y="80" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eah_Wrp4yX6WBgLpeoJf-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="eah_Wrp4yX6WBgLpeoJf-2" target="eah_Wrp4yX6WBgLpeoJf-14" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eah_Wrp4yX6WBgLpeoJf-2" value="command&lt;div&gt;get&lt;span style=&quot;background-color: initial;&quot;&gt;Target&lt;/span&gt;&lt;/div&gt;" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" parent="1" vertex="1">
+          <mxGeometry x="340" y="175" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eah_Wrp4yX6WBgLpeoJf-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="eah_Wrp4yX6WBgLpeoJf-8" target="eah_Wrp4yX6WBgLpeoJf-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eah_Wrp4yX6WBgLpeoJf-8" value="&#xa;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;create a new swerveinputstream that implemts vison stearing corrections&lt;/span&gt;&#xa;&#xa;" style="rounded=0;whiteSpace=wrap;html=1;align=center;spacingTop=10;" parent="1" vertex="1">
+          <mxGeometry x="80" y="170" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="eah_Wrp4yX6WBgLpeoJf-11" value="Create a new command that will get targets from limelight" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;" parent="1" vertex="1">
+          <mxGeometry x="340" y="95" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="eah_Wrp4yX6WBgLpeoJf-14" value="Call to the limelight subsystem to&amp;nbsp;" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" parent="1" vertex="1">
+          <mxGeometry x="340" y="315" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eah_Wrp4yX6WBgLpeoJf-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="eah_Wrp4yX6WBgLpeoJf-16" target="eah_Wrp4yX6WBgLpeoJf-17" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eah_Wrp4yX6WBgLpeoJf-22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="eah_Wrp4yX6WBgLpeoJf-16" target="eah_Wrp4yX6WBgLpeoJf-21" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eah_Wrp4yX6WBgLpeoJf-16" value="New&lt;div&gt;SwerveInputStream&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=10;" parent="1" vertex="1">
+          <mxGeometry x="30" y="460" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="eah_Wrp4yX6WBgLpeoJf-20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="eah_Wrp4yX6WBgLpeoJf-17" target="eah_Wrp4yX6WBgLpeoJf-19" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eah_Wrp4yX6WBgLpeoJf-24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="eah_Wrp4yX6WBgLpeoJf-17" target="eah_Wrp4yX6WBgLpeoJf-23" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eah_Wrp4yX6WBgLpeoJf-17" value="LimeLight&lt;div&gt;Activate Command&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=10;" parent="1" vertex="1">
+          <mxGeometry x="30" y="530" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="eah_Wrp4yX6WBgLpeoJf-26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="eah_Wrp4yX6WBgLpeoJf-19" target="eah_Wrp4yX6WBgLpeoJf-25" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eah_Wrp4yX6WBgLpeoJf-19" value="LimeLight&lt;div&gt;Vision SubSystem&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=10;" parent="1" vertex="1">
+          <mxGeometry x="30" y="600" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="eah_Wrp4yX6WBgLpeoJf-21" value="this will allow for us to pass in limelight course corrections to the user&#39;s stearing inputs" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="260" y="455" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eah_Wrp4yX6WBgLpeoJf-23" value="While the activation button is being held, it should call to the limelight vision subsystem" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="260" y="525" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eah_Wrp4yX6WBgLpeoJf-25" value="This should handle target retrieval and calculations needed to reach the target. it should then pass them back&amp;nbsp;" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="260" y="595" width="140" height="75" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
